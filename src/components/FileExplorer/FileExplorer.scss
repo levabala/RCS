@@ -1,0 +1,44 @@
+@import "src/styles/values.scss";
+
+.fileExplorer {
+  display: inline-block;
+
+  .topContainer {
+    display: flex;
+    flex-flow: column;
+
+    padding: $padding-large;
+    padding-bottom: 0;
+
+    .pathTextfield {
+      margin: 0;
+    }
+  }
+
+  .bottomContainer {
+    padding: $padding-large;
+
+    .fileGrid {
+      display: grid;
+      grid-template-columns: repeat(2, min-content);
+      column-gap: $padding-large;
+      row-gap: $padding-small;
+
+      span {
+        white-space: nowrap;
+      }
+
+      .name {
+        &.dir {
+          font-weight: 500;
+        }
+      }
+
+      .size {
+        .unit {
+          font-size: $font-small;
+        }
+      }
+    }
+  }
+}

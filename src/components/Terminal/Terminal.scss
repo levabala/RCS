@@ -1,0 +1,42 @@
+@import "src/styles/values.scss";
+@import "src/styles/colors.scss";
+
+.terminal {
+  display: inline-block;
+
+  .wrapper {
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+
+    width: 400px;
+    height: 200px;
+
+    background: $black-light;
+    margin: $padding-normal;
+    padding: $padding-normal;
+    margin-top: 0;
+    border-radius: $border-radius;
+
+    &:last-child {
+      padding-bottom: $padding-normal;
+    }
+
+    .content {
+      font-weight: 500;
+      white-space: pre-line;
+      line-height: 1.1;
+      overflow-y: scroll;
+
+      flex: 1;
+    }
+
+    .commandField {
+      padding-top: $padding-normal;
+
+      input {
+        padding: 0;
+      }
+    }
+  }
+}

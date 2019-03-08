@@ -1,0 +1,7 @@
+@import "src/styles/values.scss";
+
+body {
+  padding: $padding-small;
+  font-family: "Roboto", sans-serif;
+  font-size: $font-normal;
+}
