@@ -1,4 +1,4 @@
-import { Card, TextField } from '@material-ui/core';
+import { Card, CardContent, TextField } from '@material-ui/core';
 import { reaction, toJS } from 'mobx';
 import { observer } from 'mobx-react';
 import * as React from 'react';
@@ -67,7 +67,7 @@ export default class FileExplorer extends React.Component<IProps, IState> {
 
     return (
       <Card className="fileExplorer">
-        <div className="topContainer">
+        <CardContent className="content">
           <TextField
             className="pathTextfield"
             label="Path"
@@ -75,8 +75,6 @@ export default class FileExplorer extends React.Component<IProps, IState> {
             margin="normal"
             onChange={this.onInputPathChange}
           />
-        </div>
-        <div className="bottomContainer">
           <div className="fileGrid">
             {sortedFiles.map((f, i) => (
               <FileElement
@@ -87,7 +85,7 @@ export default class FileExplorer extends React.Component<IProps, IState> {
               />
             ))}
           </div>
-        </div>
+        </CardContent>
       </Card>
     );
   }

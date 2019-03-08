@@ -2,21 +2,16 @@
 
 .fileExplorer {
   display: inline-block;
+  max-width: calc(100vw - #{$padding-small} * 4);
+  max-height: calc(100vh - #{$padding-small} * 4);
 
-  .topContainer {
-    display: flex;
-    flex-flow: column;
+  overflow: auto !important;
 
-    padding: $padding-large;
-    padding-bottom: 0;
-
+  .content {
     .pathTextfield {
       margin: 0;
+      margin-bottom: $padding-normal;
     }
-  }
-
-  .bottomContainer {
-    padding: $padding-large;
 
     .fileGrid {
       display: grid;

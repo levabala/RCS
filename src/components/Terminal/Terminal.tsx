@@ -1,5 +1,7 @@
 import { Card, CardContent, CardHeader, InputAdornment, RootRef, TextField, Typography } from '@material-ui/core';
+import * as interact from 'levabala_interactjs';
 import * as React from 'react';
+import { createResizeConfig } from 'src/interact/resizable';
 import rootStore from 'src/stores/RootStore';
 
 import './Terminal.scss';
@@ -49,8 +51,11 @@ export default class Terminal extends React.Component<IProps, IState> {
     }
   };
 
-  public componentDidUpdate() {
-    //
+  public componentDidMount() {
+    const elem = this.rootRef.current as HTMLElement;
+    interact(elem)
+      .resizable(createResizeConfig())
+      .styleCursor(true);
   }
 
   public scrollBottom() {
@@ -102,26 +107,28 @@ export default class Terminal extends React.Component<IProps, IState> {
       <RootRef rootRef={this.rootRef}>
         <Card className="terminal">
           <CardHeader className="title" title="Terminal" />
-          <CardContent className="wrapper">
-            <Typography className="content">
-              {this.state.content.join("\r\n")}
-            </Typography>
-            <TextField
-              spellCheck={false}
-              onKeyDown={this.onKeyDown}
-              InputProps={{
-                disableUnderline: true,
-                startAdornment: (
-                  <InputAdornment position="start" className="inputAdornment">
-                    {">"}
-                  </InputAdornment>
-                )
-              }}
-              className="commandField"
-              value={this.state.currentCommand}
-              onChange={this.onInputChange}
-            />
-          </CardContent>
+          <div className="sizeController">
+            <CardContent className="wrapper">
+              <Typography className="content">
+                {this.state.content.join("\r\n")}
+              </Typography>
+              <TextField
+                spellCheck={false}
+                onKeyDown={this.onKeyDown}
+                InputProps={{
+                  disableUnderline: true,
+                  startAdornment: (
+                    <InputAdornment position="start" className="inputAdornment">
+                      {">"}
+                    </InputAdornment>
+                  )
+                }}
+                className="commandField"
+                value={this.state.currentCommand}
+                onChange={this.onInputChange}
+              />
+            </CardContent>
+          </div>
         </Card>
       </RootRef>
     );

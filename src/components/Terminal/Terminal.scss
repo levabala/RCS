@@ -4,38 +4,54 @@
 .terminal {
   display: inline-block;
 
-  .wrapper {
-    display: flex;
-    flex-flow: column;
-    justify-content: space-between;
+  .sizeController {
+    position: relative;
 
+    min-width: 400px;
+    min-height: 200px;
     width: 400px;
     height: 200px;
 
-    background: $black-light;
-    margin: $padding-normal;
-    padding: $padding-normal;
-    margin-top: 0;
-    border-radius: $border-radius;
+    .wrapper {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
 
-    &:last-child {
-      padding-bottom: $padding-normal;
-    }
+      display: flex;
+      flex-flow: column;
+      justify-content: space-between;
 
-    .content {
-      font-weight: 500;
-      white-space: pre-line;
-      line-height: 1.1;
-      overflow-y: scroll;
+      background: $black-light;
+      margin: $padding-normal;
+      padding: $padding-normal;
+      margin-top: 0;
+      border-radius: $border-radius;
 
-      flex: 1;
-    }
+      &:last-child {
+        padding-bottom: $padding-normal;
+      }
 
-    .commandField {
-      padding-top: $padding-normal;
+      .content {
+        font-weight: 500;
+        white-space: pre-line;
+        line-height: 1.1;
+        overflow-y: scroll;
 
-      input {
-        padding: 0;
+        flex: 1;
+      }
+
+      .commandField {
+        padding-top: $padding-normal;
+
+        input {
+          padding: 0;
+        }
+
+        .inputAdornment {
+          pointer-events: none;
+        }
       }
     }
   }
