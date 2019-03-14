@@ -1,4 +1,4 @@
-import { Card, CardContent, TextField } from '@material-ui/core';
+import { Card, CardContent, CardHeader, TextField } from '@material-ui/core';
 import { reaction, toJS } from 'mobx';
 import { observer } from 'mobx-react';
 import * as React from 'react';
@@ -67,6 +67,7 @@ export default class FileExplorer extends React.Component<IProps, IState> {
 
     return (
       <Card className="fileExplorer">
+        <CardHeader className="title" title="File Explorer" />
         <CardContent className="content">
           <TextField
             className="pathTextfield"

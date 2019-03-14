@@ -91,7 +91,8 @@ export default class Terminal extends React.Component<IProps, IState> {
       currentCommand: ""
     });
 
-    this.scrollBottom();
+    // this.scrollBottom();
+    setTimeout(() => this.scrollBottom());
   }
 
   public pushContentLine(line: string) {

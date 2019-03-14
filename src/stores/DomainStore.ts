@@ -1,6 +1,5 @@
 import { action, observable } from 'mobx';
-import CommandFetcher from 'src/fetchers/CommandFetcher';
-import FileTreeFetcher from 'src/fetchers/FileTreeFetcher';
+import terminalFetcher from 'src/fetchers/terminalFetcher';
 
 export class DomainStore {
   @observable
@@ -17,30 +16,30 @@ export class DomainStore {
     console.log("load dir", path);
     this.updatePath(path);
 
-    FileTreeFetcher({ path })
-      .then(res => this.updateCurrentDir(res))
-      .catch(e => console.log(e));
+    // FileTreeFetcher({ path })
+    //   .then(res => this.updateCurrentDir(res))
+    //   .catch(e => console.log(e));
   }
 
   public async sendCommand(
-    processorName: string,
+    methodName: string,
     args: string[]
   ): Promise<string> {
-    return CommandFetcher({ processorName, args })
-      .then(res => res)
-      .catch(e => e);
+    return Object.entries(await terminalFetcher(methodName, args))
+      .map(([k, v]) => `${k}: ${v}`)
+      .join("\n");
   }
 
-  @action
-  private updateCurrentDir(
-    files: Array<{
-      name: string;
-      isDirectory: boolean;
-      size: number;
-    }>
-  ) {
-    this.currentDirectory = files;
-  }
+  // @action
+  // private updateCurrentDir(
+  //   files: Array<{
+  //     name: string;
+  //     isDirectory: boolean;
+  //     size: number;
+  //   }>
+  // ) {
+  //   this.currentDirectory = files;
+  // }
 
   @action
   private updatePath(path: string) {

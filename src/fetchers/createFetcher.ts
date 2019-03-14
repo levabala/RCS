@@ -1,13 +1,12 @@
 import { stringify } from 'querystring';
-import { BodyType, RequestType, ResponseType } from 'rcs-server';
 
 import { serverAddress } from './serverSettings';
 
-export const createFetcher = <T extends RequestType>(
+export const createFetcher = <Req extends any[], Res extends object>(
   requestPath: string,
   method: "GET" | "POST"
-) => async (obj: BodyType<T>): Promise<ResponseType<T>> => {
-  const query = stringify(obj);
+) => async (args: Req): Promise<Res> => {
+  const query = stringify(args);
   return fetch(`${serverAddress}/${requestPath}?${query}`, { method }).then(
     res => {
       if (!res.ok) return Promise.reject(res.statusText);

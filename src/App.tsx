@@ -2,7 +2,6 @@ import { Grid } from '@material-ui/core';
 import { MuiThemeProvider } from '@material-ui/core/styles';
 import DevTools, { configureDevtool } from 'mobx-react-devtools';
 import * as React from 'react';
-import FileExplorer from 'src/components/FileExplorer';
 
 import Terminal from './components/Terminal';
 import rootStore from './stores/RootStore';
@@ -26,9 +25,6 @@ class App extends React.Component {
         <DevTools />
         <MuiThemeProvider theme={rootStore.uiStore.currentTheme}>
           <Grid container spacing={24}>
-            <Grid item>
-              <FileExplorer />
-            </Grid>
             <Grid item>
               <Terminal />
             </Grid>

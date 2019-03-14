@@ -1,0 +1,30 @@
+@import "src/styles/values.scss";
+
+.experimentElement {
+  .toColumns {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .content {
+    padding-top: 0;
+
+    display: grid;
+    grid-auto-flow: row;
+    row-gap: $padding-normal;
+
+    .stat {
+      display: grid;
+      grid-template-columns: min-content min-content;
+      grid-column-gap: $padding-normal;
+      grid-row-gap: $padding-small;
+
+      span {
+        display: flex;
+        align-items: center;
+
+        white-space: nowrap;
+      }
+    }
+  }
+}
